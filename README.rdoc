@@ -1,2 +1,3 @@
 == README
 
+URL shortener project version 2. Completely redone without scaffolding and bonus questions answered
