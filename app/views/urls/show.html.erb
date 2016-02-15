@@ -1,0 +1,7 @@
+<p id="alerty"> <%= notice %> </p>
+
+<%= link_to 'Home', urls_path%>
+
+<p> You may now access <%= @url.link %> Via:  <a href="<%=@url.link%>"><%= "localhost:3000/" + @url.id.to_s%></a> </p> 
+
+<p>Don't believe me? Type it in manually into your url box and see for yourself!</p>

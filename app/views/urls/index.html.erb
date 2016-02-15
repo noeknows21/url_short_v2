@@ -1,0 +1,31 @@
+<p id="alerty"> <%= notice %> </p>
+
+<h1> All URLs </h1>
+
+<%=link_to 'Add new URL', new_url_path%>
+
+  <br>
+
+<table>
+  <thead>
+    <tr>
+      <th> Link </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @urls.each do |u|%>
+      <tr>
+        <td> <%=u.link%> </td>
+        <td> <%=link_to 'Show shortened URL', u%> </td>
+        <td> <%= link_to 'Edit', edit_url_path(u)%> </td>
+        <td> <%= link_to 'Delete', u, method: :delete, data: {confirm: "Positive?? There's no turning back after this."}%> </td>
+      </tr>
+    <%end%>
+  </tbody>
+  
+
+  
+  <!-- <% link_to 'Add a new URL', new_url_path %> -->
+      

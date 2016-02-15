@@ -1,0 +1,23 @@
+<p> Don't even think about putting an invalid URL format or I'll stop you dead in your tracks! </p>
+
+<%=form_for(@url) do |f|%>
+  <% if @url.errors.any? %>
+    <div id="err_explain">
+      <h2><%= pluralize(@url.errors.count, "error")%> prevented this data from being saved:</h2>
+      <ul>
+        <% @url.errors.full_messages.each do |m| %>
+          <li> <%= m %> </li>
+          <%end%>
+      </ul>
+    </div>
+  <%end%>
+  
+  <div class="field">
+    <%= f.label 'Input an awesome URL:' %>
+    <br>
+    <%= f.url_field :link %>
+  </div>
+  <div class="actions">
+    <%=f.submit%>
+  </div>
+<%end%>
