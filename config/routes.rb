@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :urls
   
   get '/:id' => 'urls#redi'
+  
+  get '/s/:randstr' => 'urls#redi2'
 
   # get 'urls/destroy'
 

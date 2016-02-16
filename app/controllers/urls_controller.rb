@@ -1,7 +1,15 @@
 class UrlsController < ApplicationController
   before_action :get_url, only: [:show, :edit, :update, :destroy, :redi]
   
+  #redirects based on integer (id)
   def redi
+    addy = @url.link
+    redirect_to "#{addy}"
+  end
+  
+  #redirects based on random string
+  def redi2
+    @url = Url.find_by_randstr(params[:randstr])
     addy = @url.link
     redirect_to "#{addy}"
   end
@@ -16,7 +24,18 @@ class UrlsController < ApplicationController
   
   def new
     @url = Url.new
+    g_randstr
+    Url.all.each do |u|
+      g_randstr while u[:randstr] == @url.randstr
+    end
+    @url.save
   end
+  
+  #generates a random string to put into @url.randstr
+  def g_randstr
+    @url.randstr = (0...4).map { ('a'..'z').to_a[rand(26)] }.join
+  end
+    
 
   def create
     @url = Url.new(url_params)
@@ -50,6 +69,7 @@ class UrlsController < ApplicationController
   def get_url
     @url = Url.find(params[:id])
   end
+  
   
   def url_params
     params.require(:url).permit(:link)
